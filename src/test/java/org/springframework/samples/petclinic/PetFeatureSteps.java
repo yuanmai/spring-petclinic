@@ -1,5 +1,6 @@
 package org.springframework.samples.petclinic;
 
+import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -21,6 +22,11 @@ public class PetFeatureSteps {
         driver = new FirefoxDriver();
         driver.get(SeleniumTest.getBase());
         loginPage = PageFactory.initElements(driver, LoginPage.class);
+    }
+    @After
+    public void after() {
+//        driver = new org.openqa.selenium.htmlunit.HtmlUnitDriver();
+        driver.close();
     }
 
     @Given("^user has valid account$")
@@ -58,5 +64,7 @@ public class PetFeatureSteps {
         // Write code here that turns the phrase above into concrete actions
         loginPage.inputLastName(inputLastName);
     }
+
+
 
 }
