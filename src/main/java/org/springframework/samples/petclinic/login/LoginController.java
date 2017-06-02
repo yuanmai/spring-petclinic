@@ -17,4 +17,10 @@ public class LoginController {
     public String renderEmailLogin(){
         return "login/email_login";
     }
+
+    @RequestMapping(value = "/login/phone_number", method= RequestMethod.GET)
+    public String renderPhonNumberLogin(){
+        return "login/phone_number_login";
+    }
+
 }
