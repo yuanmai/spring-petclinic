@@ -4,6 +4,7 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.support.PageFactory;
 
@@ -34,13 +35,13 @@ public class PetFeatureSteps {
     @When("^use login with \"([^\"]*)\" and \"([^\"]*)\"$")
     public void use_login_with_and(String userName, String passWord) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        System.out.println("login with userName:"+userName +" with password:"+passWord );
+        loginPage.rcLogin(userName,passWord);
     }
 
     @Then("^user can access RC home page$")
     public void user_can_access_RC_home_page() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        System.out.println("RC home page is displayed");
+        Assert.assertTrue(loginPage.rcHomePageDisplayed());
     }
 
 }
