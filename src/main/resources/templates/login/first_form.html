@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'login')}">
+
+<head>
+    <style type="text/css">
+        .login-head {
+            background: lightgray;
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="row">
+    <div class="col-md-4">
+
+
+    </div>
+
+    <div class="col-md-8">
+
+        <div class="panel">
+            <div class="panel-heading login-head" >
+                Sign In
+            </div>
+            <div class="panel-body">
+                <form id="email_login_form" action="/login/email">
+
+                    <div class="input-group input-group-lg">
+
+                        <input type="text" class="form-control" placeholder="Email or Phone Number" aria-describedby="sizing-addon1">
+                        <span class="input-group-addon" id="basic-addon2"><span class="glyphicon glyphicon-info-sign"></span></span>
+                    </div>
+
+                    <button class="btn btn-default" >Next</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
