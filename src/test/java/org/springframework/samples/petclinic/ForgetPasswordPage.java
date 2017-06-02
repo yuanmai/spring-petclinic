@@ -11,7 +11,7 @@ public class ForgetPasswordPage {
     private WebElement emailSentMessage;
 
     public boolean isScreenDisplay() {
-        return title.isDisplayed();
+        return sendEmailButton.isDisplayed();
     }
 
     public void clickSendEmailButton() {
