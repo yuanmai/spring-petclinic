@@ -7,7 +7,9 @@ Feature: Login
     Then user can access the home page
 
 
-  Scenario: Login with non-existing RC phone number
-    Given User has a non-existing phone number
+  Scenario Outline: Login with non-existing RC phone number
+    Given User has a non-existing <phonenumber>
     When User login with the phone number and password
-    Then Error message is shown
+    Then <Errormessage> is shown
+    |phonenumber|ErrorMessage|
+    |    110       |   Login Fail         |

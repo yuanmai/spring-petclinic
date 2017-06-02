@@ -1,5 +1,6 @@
 package org.springframework.samples.petclinic;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -33,5 +34,15 @@ public class PetFeatureSteps {
     @When("^User login with the phone number and password$")
     public void userLoginWithThePhoneNumberAndPassword() throws Throwable {
         loginPage.login("username", "password");
+    }
+
+    @Given("^User has a non-existing phone number$")
+    public void userHasANonExistingPhoneNumber() throws Throwable {
+    }
+
+    @Then("^<ErrorMessage> is shown$")
+    public void errorMessageIsShown() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
     }
 }
