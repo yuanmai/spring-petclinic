@@ -6,9 +6,12 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.concurrent.TimeUnit;
 
 @Ignore
 @RunWith(SpringRunner.class)
@@ -26,9 +29,11 @@ public class SeleniumTest {
 
     @Before
     public void setUp() throws Exception {
-        //System.setProperty("webdriver.chrome.driver", "my/path/to/chromedriver");
-        driver = new org.openqa.selenium.htmlunit.HtmlUnitDriver();
+        System.setProperty("webdriver.chrome.driver", "chromedriver");
+        driver = new ChromeDriver();
         base = "http://localhost:" + port;
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @Test

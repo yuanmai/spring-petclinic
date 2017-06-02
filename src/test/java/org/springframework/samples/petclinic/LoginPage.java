@@ -20,4 +20,7 @@ public class LoginPage {
     public String getErrorMessage() {
        return this.errorLabel.getText();
     }
+    public void clickLogin() {
+        this.logInButton.click();
+    }
 }
