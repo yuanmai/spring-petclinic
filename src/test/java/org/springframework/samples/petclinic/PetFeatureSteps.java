@@ -5,16 +5,20 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.firefox.FirefoxBinary;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.support.PageFactory;
 
 public class PetFeatureSteps {
-    private HtmlUnitDriver driver;
+    private FirefoxDriver driver;
     private LoginPage loginPage;
 
     @Before
     public void before() {
-        driver = new org.openqa.selenium.htmlunit.HtmlUnitDriver();
+//        driver = new org.openqa.selenium.htmlunit.HtmlUnitDriver();
+        driver = new FirefoxDriver();
         driver.get(SeleniumTest.getBase());
         loginPage = PageFactory.initElements(driver, LoginPage.class);
     }
@@ -42,6 +46,17 @@ public class PetFeatureSteps {
     public void user_can_access_RC_home_page() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         Assert.assertTrue(loginPage.rcHomePageDisplayed());
+    }
+
+    @Then("^click find own$")
+    public void click_find_own() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        loginPage.clickFindOwn();
+    }
+    @Then("^input last name \"([^\"]*)\"$")
+    public void click_find_own(String inputLastName) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        loginPage.inputLastName(inputLastName);
     }
 
 }

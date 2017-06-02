@@ -17,7 +17,7 @@ public class SeleniumTest {
     @LocalServerPort
     private int port;
 
-    private static String base;
+    private static String base="http://localhost:8080/";
     private WebDriver driver;
 
     public static String getBase() {
