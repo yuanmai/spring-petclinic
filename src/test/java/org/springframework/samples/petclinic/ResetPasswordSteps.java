@@ -18,7 +18,7 @@ public class ResetPasswordSteps {
     private ResetPasswordPage resetPasswordPage;
     private final static String resetPasswordPageUrl = "http://localhost:8080/resetpassword/";
 
-    @Before
+//    @Before
     public void before() {
         System.setProperty("webdriver.chrome.driver", "D:\\ProgramFiles\\selenium\\chromedriver.exe");
         driver = new ChromeDriver();

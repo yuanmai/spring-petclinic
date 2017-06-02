@@ -31,6 +31,7 @@ public class PetFeatureSteps {
 
     @Given("^user has valid account$")
     public void user_has_valid_account() throws Throwable {
+        System.out.println("user has valid account");
     }
 
     @When("^use login with correct username and password$")
