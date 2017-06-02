@@ -19,7 +19,6 @@ public class PetFeatureSteps {
     @Before
     public void before() {
         driver = new org.openqa.selenium.htmlunit.HtmlUnitDriver();
-        driver = new HtmlUnitDriver();
         driver.get(SeleniumTest.getBase());
         loginPage = PageFactory.initElements(driver, LoginPage.class);
     }
