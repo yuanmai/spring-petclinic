@@ -5,25 +5,23 @@
     <title>Title</title>
 </head>
 <body>
-    <form action="">
-        <div>
-            <input type="text" id="username" placeholder="Phone Number">
-        </div>
-        <div>
-            <input type="number" id="extension" placeholder="Extension (Optional)">
-        </div>
-        <div>
-            <input type="password" id="password" placeholder="Password">
-        </div>
-        <div>
-            <input type="checkbox" id="rememberMe">
-            <label for="rememberMe">Stay signed in</label>
-        </div>
-        <div>
-            <button id="back" onclick="history.back()">Back</button>
-            <button id="submitBtn" onclick="signIn()">Sign In</button>
-        </div>
-    </form>
+    <div>
+        <input type="text" id="username" placeholder="Phone Number">
+    </div>
+    <div>
+        <input type="number" id="extension" placeholder="Extension (Optional)">
+    </div>
+    <div>
+        <input type="password" id="password" placeholder="Password">
+    </div>
+    <div>
+        <input type="checkbox" id="rememberMe">
+        <label for="rememberMe">Stay signed in</label>
+    </div>
+    <div>
+        <button id="back" onclick="history.back()">Back</button>
+        <button id="submitBtn" onclick="signIn()">Sign In</button>
+    </div>
 
     <script>
         window.signIn = function () {
@@ -33,7 +31,7 @@
             var elStaySignedIn = document.getElementById('rememberMe');
 
             if (elPassword.value === 'Test!123') {
-                window.location.href = '/afterLogin';
+                window.location.pathname = '/afterLogin';
             } else {
                 alert('Your password is incorrect.');
             }
