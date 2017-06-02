@@ -3,16 +3,14 @@ Feature: Login with Email
     I want to login RC with Email credential
 
     Scenario: user happy path
-        Given user has valid email account in RC
-        When user enter correct email
-        When user enter correct password
-        Then user should login success
+      Given user has valid email account in RC
+      When user enter correct credential
+      Then user should login success
 
 
     Scenario: valid email, invalid password
       Given user has valid email account in RC
-      When user enter correct email
-      When user enter invalid password
+      When user enter correct email and invalid password
       Then user should login fail
 
     Scenario: not exist email
