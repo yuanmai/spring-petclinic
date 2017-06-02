@@ -35,8 +35,26 @@ public class PetFeatureSteps {
         loginPage.forgetPassword();
     }
 
-    @Then("^Forget password page displayed$")
+    @Then("^forget password page displayed$")
     public void forget_password_page_displayed() throws Throwable {
         Assert.assertTrue(forgetPasswordPage.isScreenDisplay());
+    }
+
+    /*
+     * Send reset password email
+     */
+    @Given("^user input valid phone number and extension$")
+    public void user_input_valid_phone_number_and_extension() throws Throwable {
+        Assert.assertTrue(forgetPasswordPage.isScreenDisplay());
+    }
+
+    @When("^user click the send email button$")
+    public void user_click_the_send_email_button() throws Throwable {
+        forgetPasswordPage.clickSendEmailButton();
+    }
+
+    @Then("^email sent message displayed$")
+    public void email_sent_message_displayed() throws Throwable {
+        Assert.assertTrue(forgetPasswordPage.isEmailSentMessageDisplay());
     }
 }

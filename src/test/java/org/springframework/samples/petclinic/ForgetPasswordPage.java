@@ -7,8 +7,18 @@ import org.openqa.selenium.WebElement;
  */
 public class ForgetPasswordPage {
     private WebElement title;
+    private WebElement sendEmailButton;
+    private WebElement emailSentMessage;
 
     public boolean isScreenDisplay() {
         return title.isDisplayed();
+    }
+
+    public void clickSendEmailButton() {
+        sendEmailButton.click();
+    }
+
+    public boolean isEmailSentMessageDisplay() {
+        return emailSentMessage.isDisplayed();
     }
 }
