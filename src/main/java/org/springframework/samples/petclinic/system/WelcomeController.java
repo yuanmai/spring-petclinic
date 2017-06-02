@@ -11,4 +11,12 @@ class WelcomeController {
     public String welcome() {
         return "welcome";
     }
+    @RequestMapping("/login")
+    public String loginLandingPage() {
+        return "unifiedLogin/login";
+    }
+    @RequestMapping("/afterLogin")
+    public String afterLoginPage() {
+        return "unifiedLogin/afterlogin";
+    }
 }
