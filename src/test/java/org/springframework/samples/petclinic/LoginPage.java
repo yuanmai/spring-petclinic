@@ -17,8 +17,8 @@ public class LoginPage {
         this.password.sendKeys(password);
     }
 
-    public String getErrorMessage() {
-       return this.errorLabel.getText();
+    public boolean getErrorMessage() {
+       return this.logInButton.isDisplayed();
     }
     public void clickLogin() {
         this.logInButton.click();

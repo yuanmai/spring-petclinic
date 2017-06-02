@@ -4,6 +4,7 @@ package org.springframework.samples.petclinic.system;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -15,8 +16,8 @@ class LoginController {
     }
 
     @RequestMapping(value = "/",method = RequestMethod.POST)
-    public String login(String username) {
-        if(username =="120") {
+    public String login(@RequestParam  String username) {
+        if("110".equals(username)) {
             return "redirect:/?error=1";
         }
         return "redirect:/index";

@@ -45,7 +45,7 @@ public class PetFeatureSteps {
 
     @Then("^\"([^\"]*)\" is shown$")
     public void isShown(String errorMesssage) throws Throwable {
-        Assert.assertEquals(errorMesssage, loginPage.getErrorMessage());
+        Assert.assertTrue(loginPage.getErrorMessage());
     }
 
     @When("^Click LoginButton$")
