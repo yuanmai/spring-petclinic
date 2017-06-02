@@ -5,6 +5,6 @@ import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/features/rclogin")
+@CucumberOptions(features = "src/features/login")
 public class CucumberAcceptanceTests {
 }
