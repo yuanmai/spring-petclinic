@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'home')}">
-
   <body>
 
-    <h2 th:text="#{welcome}">Welcome</h2>
-    <div class="row">
-        <div class="col-md-12">
-          <img class="img-responsive" src="../static/resources/images/pets.png" th:src="@{/resources/images/pets.png}"/>
-        </div>
+    <div>
+        <form method="POST" action="/">
+            <input id="username" name="username" type="text">
+            <input id="password" name="password" type="password">
+            <input id="logInButton" type="submit">
+            <input id="ssoButton" type="button">
+            <input id="googleButton" type="button">
+            <input id="rememberMeChceckBox" type="checkbox">
+            <span id="errorLabel"></span>
+            <a id="forgotPassword" href="#">Forgot Password</a>
+        </form>
     </div>
 
   </body>

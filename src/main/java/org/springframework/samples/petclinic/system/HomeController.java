@@ -3,12 +3,13 @@ package org.springframework.samples.petclinic.system;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-class WelcomeController {
+class HomeController {
 
-    @RequestMapping("/")
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String welcome() {
-        return "welcome";
+        return "index";
     }
 }
