@@ -4,6 +4,6 @@ import cucumber.api.CucumberOptions;
 import org.junit.runner.RunWith;
 
 @RunWith(PassiveCucumber.class)
-@CucumberOptions(features = "src/features/login")
+@CucumberOptions(features = "src/features/rclogin")
 public class CucumberAcceptanceTests {
 }

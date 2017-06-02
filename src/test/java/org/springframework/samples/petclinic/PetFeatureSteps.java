@@ -31,4 +31,16 @@ public class PetFeatureSteps {
     public void user_can_access_the_home_page() throws Throwable {
     }
 
+    @When("^use login with \"([^\"]*)\" and \"([^\"]*)\"$")
+    public void use_login_with_and(String userName, String passWord) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        System.out.println("login with userName:"+userName +" with password:"+passWord );
+    }
+
+    @Then("^user can access RC home page$")
+    public void user_can_access_RC_home_page() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        System.out.println("RC home page is displayed");
+    }
+
 }
