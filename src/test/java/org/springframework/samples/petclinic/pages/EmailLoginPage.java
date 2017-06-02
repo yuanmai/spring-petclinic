@@ -1,5 +1,6 @@
 package org.springframework.samples.petclinic.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class EmailLoginPage {
@@ -13,6 +14,7 @@ public class EmailLoginPage {
     public WebElement signInButton;
 
     public void setEmail(String value){
+
         email.sendKeys(value);
     }
 
@@ -22,6 +24,14 @@ public class EmailLoginPage {
 
     public void setPassword(String value) {
         password.sendKeys(value);
+    }
+
+    public String getErrorMessage() {
+        return errorMessage.getText();
+    }
+
+    public void clickSignInButton() {
+        signInButton.click();
     }
 
 }
