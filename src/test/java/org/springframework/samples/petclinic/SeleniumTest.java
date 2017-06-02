@@ -1,5 +1,6 @@
 package org.springframework.samples.petclinic;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -36,6 +37,10 @@ public class SeleniumTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
+    @After
+    public void quit() throws Exception {
+        driver.quit();
+    }
     @Test
     public void driveCucumber() throws Exception {
         driver.get(base + "/");
