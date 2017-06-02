@@ -13,13 +13,13 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.support.PageFactory;
 
 public class PetFeatureSteps {
-    private FirefoxDriver driver;
+    private HtmlUnitDriver driver;
     private LoginPage loginPage;
 
     @Before
     public void before() {
-//        driver = new org.openqa.selenium.htmlunit.HtmlUnitDriver();
-        driver = new FirefoxDriver();
+        driver = new org.openqa.selenium.htmlunit.HtmlUnitDriver();
+        driver = new HtmlUnitDriver();
         driver.get(SeleniumTest.getBase());
         loginPage = PageFactory.initElements(driver, LoginPage.class);
     }
