@@ -1,4 +1,4 @@
-package org.springframework.samples.petclinic;
+package org.springframework.samples.petclinic.steps;
 
 import org.openqa.selenium.WebElement;
 
