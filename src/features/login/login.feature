@@ -7,16 +7,13 @@ Feature: Login
 
   Scenario: Login with Remember me checked
     Given user has valid account
-    When user enter credentials
-    And mark on remember me
-    And click login button
-    And click logout
+    When user login successfully with remember me
+    And user logout
     Then  User name and password are remembered
 
   Scenario: Login failure path
     Given user has valid account
     When user enter an incorrect credential
-    And click login button
     Then user get an error popup message
 
   Scenario: Login with remember me unchecked

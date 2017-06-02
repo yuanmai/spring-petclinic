@@ -1,6 +1,8 @@
 package org.springframework.samples.petclinic;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.Before;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -31,4 +33,45 @@ public class PetFeatureSteps {
     public void user_can_access_the_home_page() throws Throwable {
     }
 
+    @When("^user login successfully with remember me$")
+    public void userLoginSuccessfullyWithRememberMe() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @And("^user logout$")
+    public void userLogout() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @Then("^User name and password are remembered$")
+    public void userNameAndPasswordAreRemembered() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @When("^user enter an incorrect credential$")
+    public void userEnterAnIncorrectCredential() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @Then("^user get an error popup message$")
+    public void userGetAnErrorPopupMessage() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @And("^leave remember me unchecked$")
+    public void leaveRememberMeUnchecked() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @And("^user will sign out automatically if there is no operation for (\\d+) minutes$")
+    public void userWillSignOutAutomaticallyIfThereIsNoOperationForMinutes(int arg0) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
 }
