@@ -32,6 +32,9 @@ public class PetFeatureSteps {
     public void user_can_access_the_home_page() throws Throwable {
     }
 
+    /*
+     * Login again without logout need password
+     */
     @Given("^user close app directly witout logout$")
     public void user_close_app_directly_witout_logout() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
@@ -46,6 +49,27 @@ public class PetFeatureSteps {
 
     @Then("^need to input password again$")
     public void need_to_input_password_again() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    /*
+     * Login when forgot password
+     */
+    @Given("^user forgot password$")
+    public void user_forgot_password() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @When("^user click the forgot password button$")
+    public void user_click_the_forgot_password_button() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @Then("^Forget password screen displayed$")
+    public void forget_password_screen_displayed() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         throw new PendingException();
     }
