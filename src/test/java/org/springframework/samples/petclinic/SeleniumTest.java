@@ -26,15 +26,11 @@ public class SeleniumTest {
 
     @Before
     public void setUp() throws Exception {
-        //System.setProperty("webdriver.chrome.driver", "my/path/to/chromedriver");
-        driver = new org.openqa.selenium.htmlunit.HtmlUnitDriver();
         base = "http://localhost:" + port;
     }
 
     @Test
     public void driveCucumber() throws Exception {
-        driver.get(base + "/");
-        System.out.println(driver.getPageSource());
         PassiveCucumber.setRunTests(true);
         JUnitCore.runClasses(CucumberAcceptanceTests.class);
     }
