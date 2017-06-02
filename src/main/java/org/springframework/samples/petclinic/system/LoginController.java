@@ -17,8 +17,8 @@ class LoginController {
 
     @RequestMapping(value = "/",method = RequestMethod.POST)
     public String login(@RequestParam  String username) {
-        if("110".equals(username)) {
-            return "redirect:/?error=1";
+        if(!"120".equals(username)) {
+            return "redirect:/oups";
         }
         return "redirect:/index";
     }

@@ -9,7 +9,7 @@ public class LoginPage {
     private WebElement ssoButton;
     private WebElement googleButton;
     private WebElement forgotPassword;
-    private WebElement rememberMeChceckBox;
+    private WebElement rememberMeCheckBox;
     private WebElement errorLabel;
 
     public void login(String username, String password) {
