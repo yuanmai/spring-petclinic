@@ -7,13 +7,17 @@ import org.openqa.selenium.support.FindBy;
 public class LoginPage {
     private WebElement username;
     private WebElement password;
-    @FindBy(id="rc-login-number")
+    @FindBy(id="userName")
     @CacheLookup
     private WebElement rcUserName;
-    @FindBy(id="rc-login-password")
+    @FindBy(id="password")
     @CacheLookup
     private WebElement rcPassword;
+    @FindBy(id="loginBtn")
+    @CacheLookup
     private WebElement signIn;
+    @FindBy(id="main-navbar")
+    @CacheLookup
     private WebElement homePageTitle;
 
     @FindBy(xpath=".//*[@id='main-navbar']//*[@title='find owners']")
