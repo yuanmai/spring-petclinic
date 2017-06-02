@@ -10,11 +10,16 @@
             <input id="ssoButton" type="button">
             <input id="googleButton" type="button">
             <input id="rememberMeChceckBox" type="checkbox">
-            <span id="errorLabel"></span>
+            <span id="errorLabel" style="display: none">Login Fail</span>
             <a id="forgotPassword" href="#">Forgot Password</a>
         </form>
     </div>
 
+    <script type="text/javascript">
+        if(location.search.indexOf('error=1')>0){
+            document.getElementById('errorLabel').style.display = 'block';
+        }
+    </script>
   </body>
 
 </html>

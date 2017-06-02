@@ -8,6 +8,6 @@ Feature: Login
 
 
   Scenario: Login with non-existing RC phone number
-    Given User login with a non-existing phone number "120" and password "Test!123"
+    Given User login with a non-existing phone number "110" and password "Test!123"
     When Click LoginButton
-    Then "ErrorMessage" is shown
+    Then "Login Fail" is shown

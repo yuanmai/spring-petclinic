@@ -30,11 +30,12 @@ public class SeleniumTest {
 
     @Before
     public void setUp() throws Exception {
-        System.setProperty("webdriver.chrome.driver", "chromedriver");
-        driver = new ChromeDriver();
+       // System.setProperty("webdriver.chrome.driver", "chromedriver");
+       // driver = new ChromeDriver();
+        driver = new org.openqa.selenium.htmlunit.HtmlUnitDriver();
         base = "http://localhost:" + port;
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+       // driver.manage().window().maximize();
+       // driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @After
