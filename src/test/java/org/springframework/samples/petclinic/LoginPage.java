@@ -16,7 +16,7 @@ public class LoginPage {
     @FindBy(id="loginBtn")
     @CacheLookup
     private WebElement signIn;
-    @FindBy(id="main-navbar")
+    @FindBy(xpath="//div[1]/div/img")
     @CacheLookup
     private WebElement homePageTitle;
 
