@@ -1,6 +1,5 @@
 package org.springframework.samples.petclinic;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -22,27 +21,31 @@ public class PetFeatureSteps {
         homePage = PageFactory.initElements(driver, HomePage.class);
     }
 
-    @Given("^user has valid account$")
-    public void user_has_valid_account() throws Throwable {
-    }
 
     @Then("^user can access the home page$")
     public void user_can_access_the_home_page() throws Throwable {
-            Assert.assertTrue("Login Fail",homePage.checkLogOutButton());
+            Assert.assertTrue("Login Success",homePage.checkLogOutButton());
     }
 
-    @When("^User login with the phone number and password$")
-    public void userLoginWithThePhoneNumberAndPassword() throws Throwable {
-        loginPage.login("username", "password");
+    @Given("^Open \"([^\"]*)\"$")
+    public void open(String url) throws Throwable {
+        driver.get(url);
     }
 
-    @Given("^User has a non-existing phone number$")
-    public void userHasANonExistingPhoneNumber() throws Throwable {
+    @When("^User login with the correct phone number \"([^\"]*)\" and password \"([^\"]*)\"$")
+    public void userLoginWithTheCorrectPhoneNumberAndPassword(String username, String password) throws Throwable {
+        loginPage.login(username, password);
     }
 
-    @Then("^<ErrorMessage> is shown$")
-    public void errorMessageIsShown() throws Throwable {
+    @When("^User login with a non-existing phone number \"([^\"]*)\" and password \"([^\"]*)\"$")
+    public void userLoginWithANonExistingPhoneNumberAndPassword(String username, String password) throws Throwable {
+        loginPage.login(username, password);
+    }
+
+
+    @Then("^\"([^\"]*)\" is shown$")
+    public void isShown(String errorMesssage) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        Assert.assertEquals(errorMesssage,loginPage.getErrorMessage());
     }
 }
