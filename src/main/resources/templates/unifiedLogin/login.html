@@ -1,41 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<th:block th:if="${isLoginFail}">
+    <div style="color:red;" id="login-fail">Login Fails</div>
+</th:block>
+<form action="after-login" method="post">
     <div>
-        <input type="text" id="username" placeholder="Phone Number">
+        <input type="text" name="username" placeholder="Phone Number">
     </div>
     <div>
-        <input type="number" id="extension" placeholder="Extension (Optional)">
+        <input type="number" id="extension" name="extension" placeholder="Extension (Optional)">
     </div>
     <div>
-        <input type="password" id="password" placeholder="Password">
+        <input type="password" name="password" placeholder="Password">
     </div>
     <div>
-        <input type="checkbox" id="rememberMe">
+        <input type="checkbox" name="rememberMe" id="rememberMe">
         <label for="rememberMe">Stay signed in</label>
     </div>
     <div>
         <button id="back" onclick="history.back()">Back</button>
-        <button id="submitBtn" onclick="signIn()">Sign In</button>
+        <input type="submit" id="submitBtn" value="Submit" onclick="submit()"/>
     </div>
-
-    <script>
-        window.signIn = function () {
-            var elPhoneNumber = document.getElementById('username');
+</form>
+<script type="text/javascript">
+var elPhoneNumber = document.getElementById('username');
             var elExtension = document.getElementById('extension');
             var elPassword = document.getElementById('password');
             var elStaySignedIn = document.getElementById('rememberMe');
+            localStorage.setItem("t1","aa"+Math.random());
+            elExtension.value = localStorage.getItem("t1");
+        window.submit = function () {
 
-            if (elPassword.value === 'Test!123') {
-                window.location.pathname = '/afterLogin';
-            } else {
-                alert('Your password is incorrect.');
-            }
+
+
         };
-    </script>
+</script>
 </body>
 </html>

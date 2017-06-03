@@ -34,43 +34,39 @@ public class PetFeatureSteps {
     @Then("^user can access the home page$")
     public void user_can_access_the_home_page() throws Throwable {
         afterLoginPage = PageFactory.initElements(driver, AfterLoginPage.class);
-        Assert.assertTrue(afterLoginPage.isInAfterLoginPage());
+        Assert.assertTrue(afterLoginPage.isActive());
     }
 
     @When("^user login successfully with remember me$")
     public void userLoginSuccessfullyWithRememberMe() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        loginPage.loginWithRememberMe("username", "Test!123");
     }
 
     @And("^user logout$")
     public void userLogout() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        afterLoginPage.logout();
     }
 
     @Then("^User name and password are remembered$")
     public void userNameAndPasswordAreRemembered() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        Assert.assertTrue(loginPage.isRememberMeChecked());
     }
 
     @When("^user enter an incorrect credential$")
     public void userEnterAnIncorrectCredential() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        loginPage.login("username", "wrongpass");
     }
 
     @Then("^user get an error popup message$")
     public void userGetAnErrorPopupMessage() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        Assert.assertTrue(loginPage.hasError(driver));
     }
 
     @And("^leave remember me unchecked$")
     public void leaveRememberMeUnchecked() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        loginPage.uncheckedRememberMe();
     }
 
     @And("^user will sign out automatically if there is no operation for (\\d+) minutes$")

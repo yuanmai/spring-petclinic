@@ -5,7 +5,6 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.WebDriver;
 import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -18,7 +17,6 @@ public class SeleniumTest {
     private int port;
 
     private static String base;
-    private WebDriver driver;
 
     public static String getBase() {
         return base;

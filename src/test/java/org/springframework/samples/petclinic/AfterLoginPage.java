@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 public class AfterLoginPage {
     private WebElement logout;
 
-    public boolean isInAfterLoginPage() {
+    public boolean isActive() {
         return logout.isDisplayed();
     }
 
