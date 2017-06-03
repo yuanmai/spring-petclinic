@@ -20,7 +20,7 @@ public class LoginSteps {
     @Before
     public void before() {
         driver = new org.openqa.selenium.htmlunit.HtmlUnitDriver();
-        driver.get(SeleniumTest.getBase()+"/login");
+        driver.get(SeleniumTest.getBase());
         emailLoginPage = PageFactory.initElements(driver, EmailLoginPage.class);
         phoneNumberLoginPage = PageFactory.initElements(driver, PhoneNumberLoginPage.class);
         welcomePage = PageFactory.initElements(driver, WelcomePage.class);
@@ -29,6 +29,7 @@ public class LoginSteps {
     @When("^user enter \"([^\"]*)\" and next$")
     public void user_enter_and_next(String account) throws Throwable {
 //         Write code here that turns the phrase above into concrete actions
+        driver.get(driver.getCurrentUrl()+"/login");
         welcomePage.setAccount(account);
         welcomePage.clickSignInButton();
     }
