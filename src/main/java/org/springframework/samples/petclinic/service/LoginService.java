@@ -11,34 +11,31 @@ import java.util.stream.Stream;
 @Service
 public class LoginService {
 
-    public static final String VALID_PASSWORD = "Test!123";
+    private static final String VALID_PASSWORD = "Test!123";
+    private static final String CHARS_TO_DELETE = "+()";
+    private static final String ILLEGAL_PREFIX = "1650";
+    private static final String[] ILLEGAL_CHARS = {"@", "<", ">"};
+    private static final int USERNAME_LENGTH = 11;
 
     public boolean login(String username, String password) {
-        if (!checkUserName(username)) {
-            return false;
-        }
-        return VALID_PASSWORD.equals(password);
+        return checkUserName(username) && VALID_PASSWORD.equals(password);
     }
 
-    public boolean checkUserName(String username) {
-        username = StringUtils.replace(username, "+", "");
-        username = StringUtils.replace(username, "(", "");
-        username = StringUtils.replace(username, ")", "");
-        boolean result = true;
+    boolean checkUserName(String username) {
+        username = StringUtils.deleteAny(username, CHARS_TO_DELETE);
         if (!checkUserNameLength(username)) {
-            result = false;
+            return false;
         }
-        if (username.startsWith("1650")) {
-            result = false;
+        if (username.startsWith(ILLEGAL_PREFIX)) {
+            return false;
         }
-        if (Stream.of("@", "<", ">").anyMatch(username::contains)) {
-            result = false;
+        if (Stream.of(ILLEGAL_CHARS).anyMatch(username::contains)) {
+            return false;
         }
-        return result;
+        return true;
     }
 
     private boolean checkUserNameLength(String username) {
-        int size = username.length();
-        return size == 11;
+        return username.length() == USERNAME_LENGTH;
     }
 }

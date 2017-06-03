@@ -18,7 +18,7 @@ public class LoginServiceTests {
     @Test
     public void testLoginFail() {
         boolean isPassed = loginService.login("username", "");
-        Assert.assertTrue(!isPassed);
+        Assert.assertFalse(isPassed);
     }
 
     @Test
