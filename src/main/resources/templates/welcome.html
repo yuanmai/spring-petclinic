@@ -22,19 +22,21 @@
 </style>
 <div id="formContainer">
     <form method="POST" action="/">
-        <label> User Name
+        <label> User Name:
             <input id="username" name="username" type="text" placeholder="John Snow">
         </label>
-        <label> Password
+        <label> Password: &nbsp;&nbsp;
             <input id="password" name="password" type="password" placeholder="Password">
         </label>
-        <input id="logInButton" type="submit" th:value="Submit">
-        <button id="ssoButton" type="button">SSO</button>
-        <!--<input id="ssoButton" type="button" th:value="SSO">-->
-        <input id="googleButton" type="button" th:value="Google">
         <label>Remember Me
             <input id="rememberMeChceckBox" type="checkbox">
         </label>
+        <input id="logInButton" style="width: 100%;" type="submit" th:value="SignIn">
+        <hr/>
+        <button id="ssoButton" style="width: 49%;" type="button">SSO</button>
+        <!--<input id="ssoButton" type="button" th:value="SSO">-->
+        <input id="googleButton" style="width: 49%;" type="button" th:value="Google">
+
         <span th:if="${errorCode} == '1'">Login Fail</span>
         <a id="forgotPassword" href="#">Forgot Password</a>
     </form>
