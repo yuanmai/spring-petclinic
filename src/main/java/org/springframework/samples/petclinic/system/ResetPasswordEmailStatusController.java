@@ -1,8 +1,10 @@
 package org.springframework.samples.petclinic.system;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.regex.Matcher;
@@ -14,25 +16,29 @@ import java.util.regex.Pattern;
 @Controller
 public class ResetPasswordEmailStatusController {
 
-    private PhoneNumber phoneNumber;
-
-    @RequestMapping("/resetPasswordEmailStatus")
-    public String resetPassword(HttpServletRequest request) {
-        phoneNumber = new PhoneNumber();
-        phoneNumber.setPhoneNumber(request.getParameter("phoneNumber"));
-        phoneNumber.setExtensionNumber(request.getParameter("extensionNumber"));
-
-        System.out.println(phoneNumber.getPhoneNumber());
-        System.out.println(phoneNumber.getExtensionNumber());
-        isValidPhoneNumber(phoneNumber.getPhoneNumber());
-        isValidExtension(phoneNumber.getExtensionNumber());
+    @RequestMapping(value = "/resetPasswordEmailStatus", method = RequestMethod.GET)
+    public String resetPasswordEmailStatus(@ModelAttribute("phoneNumber") PhoneNumber phoneNumber, Model model) {
+        /*
+         * Validate phone number and extension number
+         * Get email addr
+         * Send email
+         */
+        Result result = new Result();
+        result.setMessage(Result.MSG_SUCCESS);
+        result.setKlass(Result.STYLE_SUCCESS);
+        model.addAttribute(result);
         return "resetPasswordEmailStatus";
     }
 
     @ModelAttribute("phoneNumber")
     public PhoneNumber getPhoneNumber(){
-        return phoneNumber;
+        return new PhoneNumber();
     }
+
+//    @ModelAttribute("result")
+//    public Result getResult() {
+//        return new Result();
+//    }
 
     public boolean isValidPhoneNumber(String phonenumber) {
         Pattern p = Pattern.compile("\\+?\\d\\s*\\(?\\d{3}\\)?\\s*\\d{3}\\s*[\\-\\s]?\\d{4}");

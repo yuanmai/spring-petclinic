@@ -13,7 +13,9 @@ import java.util.Set;
  * Created by jared.li on 6/2/17.
  */
 public class PhoneNumber {
+    @Column(name = "phoneNumber")
     private String phoneNumber;
+    @Column(name = "extensionNumber")
     private String extensionNumber;
 
     public String getPhoneNumber() {
