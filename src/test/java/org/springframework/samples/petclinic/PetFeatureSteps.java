@@ -32,24 +32,14 @@ public class PetFeatureSteps {
         Assert.assertTrue("Login Success", homePage.checkLogOutButton());
     }
 
-    @Given("^User login with the correct phone number \"([^\"]*)\" and password \"([^\"]*)\"$")
-    public void userLoginWithTheCorrectPhoneNumberAndPassword(String username, String password) throws Throwable {
-        loginPage.login(username, password);
-    }
-
-    @Given("^User login with a non-existing phone number \"([^\"]*)\" and password \"([^\"]*)\"$")
-    public void userLoginWithANonExistingPhoneNumberAndPassword(String username, String password) throws Throwable {
-        loginPage.login(username, password);
-    }
-
-
     @Then("^\"([^\"]*)\" is shown$")
     public void isShown(String errorMesssage) throws Throwable {
         Assert.assertTrue(loginPage.getErrorMessage());
     }
 
-    @When("^Click LoginButton$")
-    public void clickLoginButton() throws Throwable {
+    @When("^User login with a phone number \"([^\"]*)\" and password \"([^\"]*)\"$")
+    public void userLoginWithAPhoneNumberAndPassword(String username, String password) throws Throwable {
+        loginPage.login(username, password);
         loginPage.clickLogin();
     }
 }
