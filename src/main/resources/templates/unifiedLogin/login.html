@@ -44,6 +44,7 @@
             localStorage.setItem('extension', '');
             localStorage.setItem('password', '');
         }
+        localStorage.setItem('rememberMe', elStaySignedIn.checked)
     };
     window.onload = function () {
         var username = localStorage.getItem('username');
@@ -58,6 +59,8 @@
         if (password) {
             elPassword.value = password;
         }
+        var rememberMe = localStorage.getItem('rememberMe') === 'true';
+        elStaySignedIn.checked = rememberMe;
     };
 </script>
 </body>
