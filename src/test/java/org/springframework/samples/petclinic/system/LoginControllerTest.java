@@ -17,10 +17,10 @@ public class LoginControllerTest {
 
     @Test
     public void loginSuccess() throws Exception {
-        Assert.assertEquals("redirect:/index",loginController.login("120",model));
+        Assert.assertEquals("redirect:/index",loginController.login("120","123"));
     }
     @Test
     public void loginFailed() throws Exception {
-        Assert.assertEquals("welcome",loginController.login("110",model));
+        Assert.assertEquals("welcome",loginController.login("110","123"));
     }
 }
