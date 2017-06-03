@@ -17,13 +17,7 @@ Feature: Login with Email
       Given email doesn't exist in RC system
       When  user enter an not exist email
       Then login fail and show "email not exist" alert
-
-    Scenario: Network error
-      Given user has valid email account in RC
-      Given Network is not accessible
-      When user enter credential
-      Then login fail and show "Network error" alert
-
+      
 
 
 

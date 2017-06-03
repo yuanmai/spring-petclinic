@@ -26,15 +26,20 @@
                     Sign In
                 </div>
                 <div class="panel-body">
-                    <form id="email_login_form" action="/login/email">
+                    <form id="email_login_form" action="/login/verify">
 
                         <div class="input-group input-group-lg">
-
+                            <span class="input-group-addon" >Email</span>
                             <input type="text" class="form-control" placeholder="Email or Phone Number" aria-describedby="sizing-addon1">
-                            <span class="input-group-addon" id="basic-addon2"><span class="glyphicon glyphicon-info-sign"></span></span>
+
                         </div>
 
-                        <button class="btn btn-default" >Next</button>
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-addon" id="basic-addon2">Password</span>
+                            <input type="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon1">
+                        </div>
+
+                        <button class="btn btn-default" >Login</button>
                     </form>
                 </div>
 

@@ -23,4 +23,11 @@ public class LoginController {
         return "login/phone_number_login";
     }
 
+    @RequestMapping(value = "/login/verify", method= RequestMethod.GET)
+    public String verifyType(){
+
+        return "redirect:/";
+
+    }
+
 }
