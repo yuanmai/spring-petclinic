@@ -23,14 +23,14 @@
 
             <div class="panel">
                 <div class="panel-heading login-head" >
-                    Sign In
+                    <div id="email_login_text">Sign In with Email</div>
                 </div>
                 <div class="panel-body">
                     <form id="email_login_form" action="/login/email" method="post">
 
                         <div class="input-group input-group-lg">
                             <span class="input-group-addon" >Email</span>
-                            <input type="text" class="form-control" name="email" placeholder="Email" aria-describedby="sizing-addon1">
+                            <input type="text" class="form-control" name="email" placeholder="Email" aria-describedby="sizing-addon1" readonly th:text="${currentEmail}">
 
                         </div>
 

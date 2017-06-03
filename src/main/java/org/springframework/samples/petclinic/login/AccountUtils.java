@@ -1,5 +1,9 @@
 package org.springframework.samples.petclinic.login;
 
+import com.google.i18n.phonenumbers.NumberParseException;
+import com.google.i18n.phonenumbers.PhoneNumberUtil;
+import com.google.i18n.phonenumbers.Phonenumber;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,6 +18,18 @@ public class AccountUtils {
     }
 
 
+    public static boolean isValidPhoneNumber(String number) {
+        PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
+
+        try {
+            Phonenumber.PhoneNumber phoneNumber = phoneUtil.parse(number, "US");
+            return true;
+        } catch (NumberParseException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
 
 
 }

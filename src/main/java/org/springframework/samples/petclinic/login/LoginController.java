@@ -6,15 +6,15 @@ import org.springframework.samples.petclinic.model.UserEntity;
 import org.springframework.samples.petclinic.owner.OwnerRepository;
 import org.springframework.samples.petclinic.user.UserRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
 public class LoginController {
+
+    public String currentEmail;
+
 
     @RequestMapping(value = "/login", method= RequestMethod.GET)
     public String renderLogin(){
@@ -22,8 +22,9 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/login", method= RequestMethod.POST)
-    public String login(@RequestParam String username){
-        if(username.contains("@")){
+    public synchronized String login(@RequestParam String username){
+        if(AccountUtils.isValidEmail(username)){
+            currentEmail = username;
             return "redirect:login/email";
         }else{
             return "redirect:login/phone_number";
@@ -33,8 +34,14 @@ public class LoginController {
 
     @RequestMapping(value = "/login/email", method= RequestMethod.GET)
     public String renderEmailLogin(){
+
         return "login/email_login";
     }
+
+//    @RequestMapping(value={"email.json"})
+//    public @ResponseBody String showEmailInfo(){
+//        return currentEmail.get();
+//    }
 
     @RequestMapping(value = "/login/email", method= RequestMethod.POST)
     public String emailLogin(@RequestParam String email,

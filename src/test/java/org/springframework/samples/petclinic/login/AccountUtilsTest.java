@@ -19,4 +19,12 @@ public class AccountUtilsTest {
 
     }
 
+    @Test
+    public void should_recongize_valid_phone_number(){
+        assertEquals(true, AccountUtils.isValidPhoneNumber("16502650531"));
+        assertEquals(true, AccountUtils.isValidPhoneNumber("+1(650)2650531"));
+        assertEquals(true, AccountUtils.isValidPhoneNumber("165026505"));
+//        assertEquals(false, AccountUtils.isValidPhoneNumber("XXX@rringcentral.c"));
+    }
+
 }

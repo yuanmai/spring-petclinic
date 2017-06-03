@@ -16,6 +16,7 @@ public class EmailLoginPage {
 
     public WebElement signInButton;
 
+
     public void setEmail(String value){
         email.sendKeys(value);
     }

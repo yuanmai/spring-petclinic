@@ -1,11 +1,15 @@
 package org.springframework.samples.petclinic.pages;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.springframework.util.StringUtils;
 
 public class PhoneNumberLoginPage {
 
-    private WebElement phoneNumber;
+    @FindBy(id="phone_login_text")
+    public WebElement phoneNumberText;
+
+    public WebElement phoneNumber;
 
     private WebElement password;
 

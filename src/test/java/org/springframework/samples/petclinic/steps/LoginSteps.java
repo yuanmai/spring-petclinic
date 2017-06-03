@@ -9,18 +9,42 @@ import org.openqa.selenium.support.PageFactory;
 import org.springframework.samples.petclinic.SeleniumTest;
 import org.springframework.samples.petclinic.pages.EmailLoginPage;
 import org.springframework.samples.petclinic.pages.PhoneNumberLoginPage;
+import org.springframework.samples.petclinic.pages.WelcomePage;
 
 public class LoginSteps {
     private HtmlUnitDriver driver;
     private EmailLoginPage emailLoginPage;
     private PhoneNumberLoginPage phoneNumberLoginPage;
+    private WelcomePage welcomePage;
 
     @Before
     public void before() {
         driver = new org.openqa.selenium.htmlunit.HtmlUnitDriver();
-        driver.get(SeleniumTest.getBase());
+        driver.get(SeleniumTest.getBase()+"/login");
         emailLoginPage = PageFactory.initElements(driver, EmailLoginPage.class);
         phoneNumberLoginPage = PageFactory.initElements(driver, PhoneNumberLoginPage.class);
+        welcomePage = PageFactory.initElements(driver, WelcomePage.class);
+    }
+
+    @When("^user enter \"([^\"]*)\" and next$")
+    public void user_enter_and_next(String account) throws Throwable {
+//         Write code here that turns the phrase above into concrete actions
+        welcomePage.setAccount(account);
+        welcomePage.clickSignInButton();
+    }
+
+    @Then("^user should go to email login page$")
+    public void user_should_go_to_email_login_page() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+//        throw new PendingException();
+        assert emailLoginPage.email.isDisplayed();
+    }
+
+    @Then("^user should go to phone login page$")
+    public void user_should_go_to_phone_login_page() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        assert phoneNumberLoginPage.phoneNumberText.isDisplayed();
+
     }
 
 
