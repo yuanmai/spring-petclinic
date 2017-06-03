@@ -17,7 +17,7 @@ public class SeleniumTest {
     @LocalServerPort
     private int port;
 
-    private static String base;
+    private static String base = "http://localhost:8080";
     private WebDriver driver;
 
     public static String getBase() {
@@ -27,7 +27,7 @@ public class SeleniumTest {
     @Before
     public void setUp() throws Exception {
         //System.setProperty("webdriver.chrome.driver", "my/path/to/chromedriver");
-        driver = new org.openqa.selenium.htmlunit.HtmlUnitDriver();
+        driver = new org.openqa.selenium.htmlunit.HtmlUnitDriver(true);
         base = "http://localhost:" + port;
     }
 
@@ -37,5 +37,6 @@ public class SeleniumTest {
         System.out.println(driver.getPageSource());
         PassiveCucumber.setRunTests(true);
         JUnitCore.runClasses(CucumberAcceptanceTests.class);
+
     }
 }

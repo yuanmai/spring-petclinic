@@ -1,12 +1,26 @@
 package org.springframework.samples.petclinic.steps;
 
 import cucumber.api.PendingException;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.openqa.selenium.support.PageFactory;
+import org.springframework.samples.petclinic.LoginPage;
+import org.springframework.samples.petclinic.SeleniumTest;
+import org.springframework.samples.petclinic.pages.WelcomePage;
 
 public class LoginSteps {
+    private HtmlUnitDriver driver;
+    private WelcomePage welcomePage;
 
+    @Before
+    public void before() {
+        driver = new org.openqa.selenium.htmlunit.HtmlUnitDriver();
+        driver.get(SeleniumTest.getBase());
+        welcomePage = PageFactory.initElements(driver, WelcomePage.class);
+    }
 
 
     @Given("^user has valid email account in RC$")
@@ -97,6 +111,12 @@ public class LoginSteps {
 
     @Given("^user has valid company ext number in RC with  admin permission$")
     public void user_has_valid_company_ext_number_in_RC_with_admin_permission() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+//        throw new PendingException();
+    }
+
+    @When("^user enter correct email and invalid password$")
+    public void user_enter_correct_email_and_invalid_password() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
 //        throw new PendingException();
     }

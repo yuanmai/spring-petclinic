@@ -1,31 +1,26 @@
 package org.springframework.samples.petclinic.pages;
 
-
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class EmailLoginPage {
+public class WelcomePage {
 
-    @FindBy(id="email_login_text")
-    public WebElement email;
-
-    @FindBy(id="password_input")
-    public WebElement password;
+    @FindBy(id="login_account_input")
+    public WebElement account;
 
     public WebElement errorMessage;
 
+    @FindBy(id="next_button")
     public WebElement signInButton;
 
-    public void setEmail(String value){
-        email.sendKeys(value);
+
+    public void setAccount(String credential){
+        account.sendKeys(credential);
     }
 
-    public void resetEmail(){
-        email.sendKeys("");
-    }
-
-    public void setPassword(String value) {
-        password.sendKeys(value);
+    public void resetAccount(){
+        account.sendKeys("");
     }
 
     public String getErrorMessage() {
@@ -35,5 +30,4 @@ public class EmailLoginPage {
     public void clickSignInButton() {
         signInButton.click();
     }
-
 }
