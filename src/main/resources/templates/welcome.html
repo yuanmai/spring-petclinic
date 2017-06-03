@@ -1,15 +1,29 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'welcome')}">
+
+<head>
+    <style type="text/css">
+        label {
+            display: block;
+        }
+    </style>
+</head>
 <body>
 
 <div>
     <form method="POST" action="/">
-        <input id="username" name="username" type="text">
-        <input id="password" name="password" type="password">
-        <input id="logInButton" type="submit">
-        <input id="ssoButton" type="button">
-        <input id="googleButton" type="button">
-        <input id="rememberMeChceckBox" type="checkbox">
+        <label > User Name
+            <input id="username" name="username" type="text" placeholder="John Snow">
+        </label>
+        <label > Password
+            <input id="password" name="password" type="password" placeholder="Password">
+        </label>
+        <input id="logInButton" type="submit" th:value="Submit">
+        <input id="ssoButton" type="button" th:value="SSO">
+        <input id="googleButton" type="button" th:value="Google">
+        <label>Remember Me
+            <input id="rememberMeChceckBox" type="checkbox">
+        </label>
         <span th:if="${errorCode} == '1'">Login Fail</span>
         <span th:if="${errorCode} == '2'">Login Fail2</span>
         <span th:if="${errorCode} == '3'">Login Fail3</span>
