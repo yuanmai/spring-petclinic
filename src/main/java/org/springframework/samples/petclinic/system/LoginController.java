@@ -24,9 +24,8 @@ class LoginController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public String login(@RequestParam String username, String password){
+    public String login(Map<String, Object> model, @RequestParam String username, String password){
         if (!loginInternal(username, password)) {
-            Map<String, Object> model= new HashMap<>();
             model.put("errorCode", "1");
             return "welcome";
         }
