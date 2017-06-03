@@ -1,6 +1,7 @@
 package org.springframework.samples.petclinic.system;
 
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.samples.petclinic.owner.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -31,10 +32,18 @@ class WelcomeController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(User user, Map<String, Object> model) {
+        if (user == null || StringUtils.isEmpty(user.getUserName()) || StringUtils.isEmpty(user.getPassword())) {
+            isLogin = false;
+            model.put("isLogin", isLogin);
+            model.put("hasError", 1);
+            model.put("error", "Empty userName or password.");
+            return "login/login";
+        }
         if (map.containsKey(user.getUserName()) && map.get(user.getUserName()).equals(user.getPassword())) {
             isLogin = true;
             return "redirect:/vets.html";
         } else {
+            model.put("isLogin", isLogin);
             model.put("hasError", 1);
             model.put("error", "Incorrect userName or password.");
         }
