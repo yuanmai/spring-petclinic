@@ -13,12 +13,22 @@ import java.util.Set;
  * Created by jared.li on 6/2/17.
  */
 public class PhoneNumber {
-    @Column(name = "account")
-    @NotEmpty
-    @Digits(fraction = 0, integer = 10)
-    private String accountNumber;
-
-    @Column(name = "extensionNumber")
-    @Digits(fraction = 0, integer = 3)
+    private String phoneNumber;
     private String extensionNumber;
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getExtensionNumber() {
+        return extensionNumber;
+    }
+
+    public void setExtensionNumber(String extensionNumber) {
+        this.extensionNumber = extensionNumber;
+    }
 }
