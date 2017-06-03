@@ -17,7 +17,7 @@ Feature: Login with Email
       Given email doesn't exist in RC system
       When  user enter an not exist email
       Then login fail and show "email not exist" alert
-      
+
 
 
 
