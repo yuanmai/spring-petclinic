@@ -3,25 +3,36 @@
 
 <head>
     <style type="text/css">
-        label {
-            display: block;
-        }
+
     </style>
 </head>
 <body>
-
-<div>
+<style type="text/css">
+    label {
+        display: block;
+    }
+    #formContainer{
+        text-align: center;
+        margin:auto;
+        max-width: 25%;
+    }
+    form{
+        text-align: left;
+    }
+</style>
+<div id="formContainer">
     <form method="POST" action="/">
-        <label style="display: block"> User Name
+        <label> User Name
             <input id="username" name="username" type="text" placeholder="John Snow">
         </label>
-        <label style="display: block"> Password
+        <label> Password
             <input id="password" name="password" type="password" placeholder="Password">
         </label>
         <input id="logInButton" type="submit" th:value="Submit">
-        <input id="ssoButton" type="button" th:value="SSO">
+        <button id="ssoButton" type="button">SSO</button>
+        <!--<input id="ssoButton" type="button" th:value="SSO">-->
         <input id="googleButton" type="button" th:value="Google">
-        <label style="display: block">Remember Me
+        <label>Remember Me
             <input id="rememberMeChceckBox" type="checkbox">
         </label>
         <span th:if="${errorCode} == '1'">Login Fail</span>
