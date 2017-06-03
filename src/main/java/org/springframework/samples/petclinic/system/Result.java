@@ -7,7 +7,7 @@ import javax.persistence.Column;
  */
 public class Result {
     public static String STYLE_SUCCESS = "alert  alert-success";
-    public static String STYLE_ERROR = "alert  alert-error";
+    public static String STYLE_ERROR = "alert  alert-danger";
 
     public static String MSG_SUCCESS = "A reset password email has been sent to your mailbox. Please check.";
     public static String MSG_ERROR = "Send email error.";

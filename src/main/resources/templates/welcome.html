@@ -10,7 +10,34 @@
           <!--<img class="img-responsive" src="../static/resources/images/pets.png" th:src="@{/resources/images/pets.png}"/>-->
         <!--</div>-->
     <!--</div>-->
-    <a href="/forgetPassword" id="forgetPasswordButton">Forget Password</a>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number</label>
+                    <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Phone Number">
+                </div>
+                <div class="form-group">
+                    <label for="extensionNumber">Extension</label>
+                    <input type="text" class="form-control" id="extensionNumber" name="extensionNumber" placeholder="Extension">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="text" class="form-control" id="password" name="password" placeholder="Password">
+                </div>
+                <div class="col-md-6" style="padding-left:0;">
+                <button type="submit" class="btn btn-default" style="width:100%;" id="login">Login</button>
+                </div>
+                <div class="col-md-6" style="padding-right:0;">
+                <button type="button" class="btn btn-default" style="width:100%;" onClick="location.href='/forgetPassword'" id="forgetPassword">Forget Password</button>
+                </div>
+        </div>
+    </div>
+    <!--<div class="row">-->
+        <!--<div class="col-md-4 col-md-offset-4" style="text-align:center;">-->
+            <!--<a href="/forgetPassword" id="forgetPasswordButton">Forget Password</a>-->
+        <!--</div>-->
+    <!--</div>-->
+
   </body>
 
 </html>

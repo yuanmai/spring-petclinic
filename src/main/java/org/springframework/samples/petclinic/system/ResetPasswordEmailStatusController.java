@@ -25,7 +25,7 @@ public class ResetPasswordEmailStatusController {
          */
         Result result = new Result();
         result.setMessage(isValidValue(phoneNumber) ? Result.MSG_SUCCESS: Result.MSG_ERROR);
-        result.setKlass(Result.STYLE_SUCCESS);
+        result.setKlass(isValidValue(phoneNumber) ? Result.STYLE_SUCCESS: Result.STYLE_ERROR);
         model.addAttribute(result);
         return "resetPasswordEmailStatus";
     }
