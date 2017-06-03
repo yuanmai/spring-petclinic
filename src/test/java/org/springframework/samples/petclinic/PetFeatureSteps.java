@@ -71,4 +71,8 @@ public class PetFeatureSteps {
         loginPage.uncheckedRememberMe();
     }
 
+    @When("^user enter an incorrect username$")
+    public void userEnterAnIncorrectUsername() throws Throwable {
+        loginPage.login("1111", "Test!123");
+    }
 }
