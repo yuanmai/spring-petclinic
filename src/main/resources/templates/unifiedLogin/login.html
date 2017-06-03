@@ -10,13 +10,13 @@
 </th:block>
 <form action="after-login" method="post">
     <div>
-        <input type="text" name="username" placeholder="Phone Number">
+        <input type="text" name="username" id="username" placeholder="Phone Number">
     </div>
     <div>
         <input type="number" id="extension" name="extension" placeholder="Extension (Optional)">
     </div>
     <div>
-        <input type="password" name="password" placeholder="Password">
+        <input type="password" name="password" id="password" placeholder="Password">
     </div>
     <div>
         <input type="checkbox" name="rememberMe" id="rememberMe">
@@ -24,21 +24,41 @@
     </div>
     <div>
         <button id="back" onclick="history.back()">Back</button>
-        <input type="submit" id="submitBtn" value="Submit" onclick="submit()"/>
+        <input type="submit" id="submitBtn" value="Submit" onclick="formSubmit()"/>
     </div>
 </form>
 <script type="text/javascript">
-var elPhoneNumber = document.getElementById('username');
-            var elExtension = document.getElementById('extension');
-            var elPassword = document.getElementById('password');
-            var elStaySignedIn = document.getElementById('rememberMe');
-            localStorage.setItem("t1","aa"+Math.random());
-            elExtension.value = localStorage.getItem("t1");
-        window.submit = function () {
-
-
-
-        };
+    var elPhoneNumber = document.getElementById('username');
+    var elExtension = document.getElementById('extension');
+    var elPassword = document.getElementById('password');
+    var elStaySignedIn = document.getElementById('rememberMe');
+    localStorage.setItem("t1", "aa" + Math.random());
+    elExtension.value = localStorage.getItem("t1");
+    window.formSubmit = function () {
+        if (elStaySignedIn.checked) {
+            localStorage.setItem('username', elPhoneNumber.value);
+            localStorage.setItem('extension', elExtension.value);
+            localStorage.setItem('password', elPassword.value);
+        } else {
+            localStorage.setItem('username', '');
+            localStorage.setItem('extension', '');
+            localStorage.setItem('password', '');
+        }
+    };
+    window.onload = function () {
+        var username = localStorage.getItem('username');
+        var extension = localStorage.getItem('extension');
+        var password = localStorage.getItem('password');
+        if (username) {
+            elPhoneNumber.value = username;
+        }
+        if (extension) {
+            elExtension.value = extension;
+        }
+        if (password) {
+            elPassword.value = password;
+        }
+    };
 </script>
 </body>
 </html>
