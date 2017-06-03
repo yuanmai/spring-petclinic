@@ -1,6 +1,5 @@
 package org.springframework.samples.petclinic;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -11,6 +10,7 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.support.PageFactory;
 
 public class PetFeatureSteps {
+    public static final String USERNAME = "16552223333";
     private HtmlUnitDriver driver;
     private LoginPage loginPage;
     private AfterLoginPage afterLoginPage;
@@ -28,7 +28,7 @@ public class PetFeatureSteps {
 
     @When("^use login with correct username and password$")
     public void use_login_with_correct_username_and_password() throws Throwable {
-        loginPage.login("username", "Test!123");
+        loginPage.login(USERNAME, "Test!123");
     }
 
     @Then("^user can access the home page$")
@@ -39,25 +39,27 @@ public class PetFeatureSteps {
 
     @When("^user login successfully with remember me$")
     public void userLoginSuccessfullyWithRememberMe() throws Throwable {
-        loginPage.loginWithRememberMe("username", "Test!123");
+        loginPage.loginWithRememberMe(USERNAME, "Test!123");
     }
 
     @And("^user logout$")
     public void userLogout() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
+        afterLoginPage = PageFactory.initElements(driver, AfterLoginPage.class);
         afterLoginPage.logout();
     }
 
     @Then("^User name and password are remembered$")
     public void userNameAndPasswordAreRemembered() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        Assert.assertTrue(loginPage.isRememberMeChecked());
+        loginPage = PageFactory.initElements(driver, LoginPage.class);
+        Assert.assertTrue(loginPage.isUserNameNotEmpty());
     }
 
     @When("^user enter an incorrect credential$")
     public void userEnterAnIncorrectCredential() throws Throwable {
-        loginPage.login("username", "wrongpass");
+        loginPage.login(USERNAME, "wrongpass");
     }
+
 
     @Then("^user get an error popup message$")
     public void userGetAnErrorPopupMessage() throws Throwable {
@@ -69,9 +71,4 @@ public class PetFeatureSteps {
         loginPage.uncheckedRememberMe();
     }
 
-    @And("^user will sign out automatically if there is no operation for (\\d+) minutes$")
-    public void userWillSignOutAutomaticallyIfThereIsNoOperationForMinutes(int arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
 }

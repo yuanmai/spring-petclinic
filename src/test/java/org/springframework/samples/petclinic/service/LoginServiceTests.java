@@ -47,4 +47,9 @@ public class LoginServiceTests {
     public void testUserNameAcceptableCharacters() {
         Assert.assertTrue(loginService.checkUserName("+1(655)2223333"));
     }
+
+    @Test
+    public void testUserNamePass() {
+        Assert.assertTrue(loginService.checkUserName("16552223333"));
+    }
 }

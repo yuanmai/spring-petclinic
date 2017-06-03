@@ -14,6 +14,9 @@ public class LoginService {
     public static final String VALID_PASSWORD = "Test!123";
 
     public boolean login(String username, String password) {
+        if (!checkUserName(username)) {
+            return false;
+        }
         return VALID_PASSWORD.equals(password);
     }
 

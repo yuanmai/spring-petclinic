@@ -1,5 +1,6 @@
 package org.springframework.samples.petclinic;
 
+import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
@@ -28,6 +29,10 @@ public class LoginPage {
 
     public boolean isRememberMeChecked() {
         return rememberMe.isSelected();
+    }
+
+    public boolean isUserNameNotEmpty() {
+        return StringUtils.isNotEmpty(this.username.getAttribute("value"));
     }
 
     public void uncheckedRememberMe() {
