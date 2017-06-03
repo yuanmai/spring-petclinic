@@ -24,7 +24,7 @@ public class ResetPasswordEmailStatusController {
          * Send email
          */
         Result result = new Result();
-        result.setMessage(Result.MSG_SUCCESS);
+        result.setMessage(isValidValue(phoneNumber) ? Result.MSG_SUCCESS: Result.MSG_ERROR);
         result.setKlass(Result.STYLE_SUCCESS);
         model.addAttribute(result);
         return "resetPasswordEmailStatus";
@@ -39,6 +39,10 @@ public class ResetPasswordEmailStatusController {
 //    public Result getResult() {
 //        return new Result();
 //    }
+
+    private boolean isValidValue(PhoneNumber phoneNumber) {
+        return isValidPhoneNumber(phoneNumber.getPhoneNumber()) && isValidExtension(phoneNumber.getExtensionNumber());
+    }
 
     public boolean isValidPhoneNumber(String phonenumber) {
         Pattern p = Pattern.compile("\\+?\\d\\s*\\(?\\d{3}\\)?\\s*\\d{3}\\s*[\\-\\s]?\\d{4}");

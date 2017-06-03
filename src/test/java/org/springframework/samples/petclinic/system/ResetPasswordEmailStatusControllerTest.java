@@ -16,4 +16,13 @@ public class ResetPasswordEmailStatusControllerTest {
         Assert.assertFalse(rpc.isValidPhoneNumber("+1650657489$"));
         Assert.assertTrue(rpc.isValidPhoneNumber("+16506574890"));
     }
+
+    @Test
+    public void isValidExtensionTest() {
+        ResetPasswordEmailStatusController rpc = new ResetPasswordEmailStatusController();
+        Assert.assertFalse(rpc.isValidExtension("+1650657489"));
+        Assert.assertFalse(rpc.isValidExtension("23234545"));
+        Assert.assertFalse(rpc.isValidExtension("!@#13"));
+        Assert.assertTrue(rpc.isValidExtension("1"));
+    }
 }
