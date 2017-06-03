@@ -18,19 +18,19 @@ package org.springframework.samples.petclinic.user;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.samples.petclinic.model.UserEntity;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.samples.petclinic.model.RcUser;
 
 import java.util.List;
 
-public interface UserRepository extends Repository<UserEntity, Integer> {
+public interface UserRepository extends Repository<RcUser, Integer> {
 
-    //@Query("SELECT user FROM user u WHERE u.email = :email and u.password= :password")
-    @Transactional(readOnly = true)
-    List<UserEntity> findByEmailAndPassword(@Param("email") String email, @Param("password") String password);
+    @Query("SELECT ru FROM RcUser ru WHERE ru.email = :email and ru.password= :password")
+    List<RcUser> findByEmailAndPassword(@Param("email") String email, @Param("password") String password);
 
-    //@Query("SELECT user FROM user u WHERE u.phoneNumber = :phoneNumber and u.password= :password")
-    @Transactional(readOnly = true)
-    List<UserEntity> findByPhoneNumberAndPassword(@Param("phoneNumber") String phoneNumber,@Param("password") String password);
+    @Query("SELECT ru FROM RcUser ru WHERE ru.phoneNumber = :phoneNumber and ru.password= :password")
+    List<RcUser> findByPhoneNumberAndPassword(@Param("phoneNumber") String phoneNumber, @Param("password") String password);
+
+    @Query("SELECT ru FROM RcUser ru WHERE ru.phoneNumber = :phoneNumber and ru.password= :password and ru.extension= :extension")
+    List<RcUser> findByPhoneNumberExtAndPassword(@Param("phoneNumber") String phoneNumber, @Param("password") String password, @Param("extension") String extension);
 
 }

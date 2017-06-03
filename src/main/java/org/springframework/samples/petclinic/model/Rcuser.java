@@ -7,8 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user")
-public class UserEntity extends BaseEntity {
+@Table(name = "users")
+public class RcUser extends BaseEntity {
 
     @Column(name="user_name")
     @NotEmpty
@@ -22,7 +22,7 @@ public class UserEntity extends BaseEntity {
     @NotEmpty
     private String email;
 
-    @Column(name="phoneNumber")
+    @Column(name="phone_number")
     @NotEmpty
     private String phoneNumber;
 

@@ -1,12 +1,13 @@
 package org.springframework.samples.petclinic.login;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
-import org.springframework.samples.petclinic.model.UserEntity;
-import org.springframework.samples.petclinic.owner.OwnerRepository;
+import org.springframework.samples.petclinic.model.RcUser;
 import org.springframework.samples.petclinic.user.UserRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -15,6 +16,13 @@ public class LoginController {
 
     public String currentEmail;
 
+    private final UserRepository userRepository;
+
+
+    @Autowired
+    public LoginController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @RequestMapping(value = "/login", method= RequestMethod.GET)
     public String renderLogin(){
@@ -46,7 +54,8 @@ public class LoginController {
     @RequestMapping(value = "/login/email", method= RequestMethod.POST)
     public String emailLogin(@RequestParam String email,
                              @RequestParam String password){
-        if(email.equals(password)){
+        List<RcUser> searchResult = userRepository.findByEmailAndPassword(email,password);
+        if(searchResult.size()>0){
             return "redirect:success";
         }else{
             return "redirect:fail";
@@ -60,8 +69,10 @@ public class LoginController {
 
     @RequestMapping(value = "/login/phone_number", method= RequestMethod.POST)
     public String phoneNumberLogin(@RequestParam String phoneNumber,
+                                   @RequestParam String extension,
                                    @RequestParam String password){
-        if(phoneNumber.equals(password)){
+        List<RcUser> searchResult = !StringUtils.hasText(extension)?userRepository.findByPhoneNumberAndPassword(phoneNumber,password):userRepository.findByPhoneNumberExtAndPassword(phoneNumber,password,extension);
+        if(!searchResult.isEmpty()){
             return "redirect:success";
         }else{
             return "redirect:fail";
@@ -70,7 +81,6 @@ public class LoginController {
 
     @RequestMapping(value = "/login/verify", method= RequestMethod.GET)
     public String verifyType() {
-
         return "redirect:/";
     }
 

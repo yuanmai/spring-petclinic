@@ -7,12 +7,12 @@ DROP TABLE types IF EXISTS;
 DROP TABLE owners IF EXISTS;
 DROP TABLE user IF EXISTS;
 
-CREATE TABLE user (
+CREATE TABLE users (
   id         INTEGER IDENTITY PRIMARY KEY,
   user_name VARCHAR(30),
   password  VARCHAR(30),
   email  VARCHAR(30),
-  phoneNumber VARCHAR(30),
+  phone_number VARCHAR(30),
   extension VARCHAR(30)
 );
 
