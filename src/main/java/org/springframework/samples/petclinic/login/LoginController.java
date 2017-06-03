@@ -58,11 +58,7 @@ public class LoginController {
     public String emailLogin(@RequestParam String email,
                              @RequestParam String password){
         List<RcUser> searchResult = userRepository.findByEmailAndPassword(email,password);
-        if(searchResult.size()>0){
-            return "redirect:success";
-        }else{
-            return "redirect:fail";
-        }
+        return searchResult.size() > 0 ? "redirect:success" : "redirect:fail";
     }
 
     @RequestMapping(value = "/login/phone_number", method= RequestMethod.GET)
@@ -77,11 +73,7 @@ public class LoginController {
                                    @RequestParam String password){
         String plainPhoneNumber = AccountUtils.parseAsPlainNumber(phoneNumber);
         List<RcUser> searchResult = !StringUtils.hasText(extension)?userRepository.findByPhoneNumberAndPassword(plainPhoneNumber,password):userRepository.findByPhoneNumberExtAndPassword(plainPhoneNumber,password,extension);
-        if(!searchResult.isEmpty()){
-            return "redirect:success";
-        }else{
-            return "redirect:fail";
-        }
+        return !searchResult.isEmpty() ? "redirect:success" : "redirect:fail";
     }
 
     @RequestMapping(value = "/login/verify", method= RequestMethod.GET)
