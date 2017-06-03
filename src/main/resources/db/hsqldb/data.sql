@@ -51,3 +51,6 @@ INSERT INTO visits VALUES (1, 7, '2013-01-01', 'rabies shot');
 INSERT INTO visits VALUES (2, 8, '2013-01-02', 'rabies shot');
 INSERT INTO visits VALUES (3, 8, '2013-01-03', 'neutered');
 INSERT INTO visits VALUES (4, 7, '2013-01-04', 'spayed');
+
+INSERT INTO user VALUES(1,'test','testUsr2','test@test.com','8885287464','6236')
+INSERT INTO user VALUES(2,'test','testUsr3','test@test.com','8885287464','6236')

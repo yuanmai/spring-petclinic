@@ -5,6 +5,16 @@ DROP TABLE visits IF EXISTS;
 DROP TABLE pets IF EXISTS;
 DROP TABLE types IF EXISTS;
 DROP TABLE owners IF EXISTS;
+DROP TABLE user IF EXISTS;
+
+CREATE TABLE user (
+  id         INTEGER IDENTITY PRIMARY KEY,
+  user_name VARCHAR(30),
+  password  VARCHAR(30),
+  email  VARCHAR(30),
+  phoneNumber VARCHAR(30),
+  extension VARCHAR(30)
+);
 
 
 CREATE TABLE vets (
