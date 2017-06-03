@@ -1,11 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'index')}">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'welcome')}">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <style type="text/css">
+
+    </style>
 </head>
 <body>
+
+<div class="user-info">
+    <span>Hello, </span>
+    <span th:text="${userName}"></span>
+</div>
 <a id="logOutButton" href="/">Logout</a>
 </body>
+
 </html>

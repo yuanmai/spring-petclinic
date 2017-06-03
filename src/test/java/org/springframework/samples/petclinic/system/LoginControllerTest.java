@@ -34,7 +34,7 @@ public class LoginControllerTest {
         user.setUsername("120");
         user.setPassword("123");
         when(userRepository.findUsers("120")).thenReturn(Arrays.asList(user));
-        Assert.assertEquals("redirect:/index",loginController.login(model,"120","123"));
+        Assert.assertEquals("index",loginController.login(model,"120","123") );
     }
     @Test
     public void loginFailed() throws Exception {
