@@ -1,25 +1,25 @@
 package org.springframework.samples.petclinic.steps;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.springframework.samples.petclinic.LoginPage;
 import org.springframework.samples.petclinic.SeleniumTest;
 import org.springframework.samples.petclinic.pages.EmailLoginPage;
 import org.springframework.samples.petclinic.pages.PhoneNumberLoginPage;
 
 public class LoginSteps {
     private HtmlUnitDriver driver;
+    private EmailLoginPage emailLoginPage;
     private PhoneNumberLoginPage phoneNumberLoginPage;
 
     @Before
     public void before() {
         driver = new org.openqa.selenium.htmlunit.HtmlUnitDriver();
         driver.get(SeleniumTest.getBase());
+        emailLoginPage = PageFactory.initElements(driver, EmailLoginPage.class);
         phoneNumberLoginPage = PageFactory.initElements(driver, PhoneNumberLoginPage.class);
     }
 
