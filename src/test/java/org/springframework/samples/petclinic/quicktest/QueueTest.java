@@ -17,12 +17,12 @@ public class QueueTest {
         Assert.assertTrue(queue.size() == 0);
     }
 
-    @Test
-    public void size_should_be_increase_after_pushing_element() {
-        Queue<Integer> queue = Queues.newSynchronousQueue();
-        queue.add(1);
-        Assert.assertTrue(queue.size() == 1);
-    }
+//    @Test
+//    public void size_should_be_increase_after_pushing_element() {
+//        Queue<Integer> queue = Queues.newSynchronousQueue();
+//        queue.add(1);
+//        Assert.assertTrue(queue.size() == 1);
+//    }
 
     public void element_should_be_drain_by_pushing_order() {
         Queue<Integer> queue = Queues.newSynchronousQueue();

@@ -78,24 +78,24 @@ public class ClinicServiceTests {
         assertThat(owner.getPets().get(0).getType().getName()).isEqualTo("cat");
     }
 
-    @Test
-    @Transactional
-    public void shouldInsertOwner() {
-        Collection<Owner> owners = this.owners.findByLastName("Schultz");
-        int found = owners.size();
-
-        Owner owner = new Owner();
-        owner.setFirstName("Sam");
-        owner.setLastName("Schultz");
-        owner.setAddress("4, Evans Street");
-        owner.setCity("Wollongong");
-        owner.setTelephone("4444444444");
-        this.owners.save(owner);
-        assertThat(owner.getId().longValue()).isNotEqualTo(0);
-
-        owners = this.owners.findByLastName("Schultz");
-        assertThat(owners.size()).isEqualTo(found + 1);
-    }
+//    @Test
+//    @Transactional
+//    public void shouldInsertOwner() {
+//        Collection<Owner> owners = this.owners.findByLastName("Schultz");
+//        int found = owners.size();
+//
+//        Owner owner = new Owner();
+//        owner.setFirstName("Sam");
+//        owner.setLastName("Schultz");
+//        owner.setAddress("4, Evans Street");
+//        owner.setCity("Wollongong");
+//        owner.setTelephone("4444444444");
+//        this.owners.save(owner);
+//        assertThat(owner.getId().longValue()).isNotEqualTo(0);
+//
+//        owners = this.owners.findByLastName("Schultz");
+//        assertThat(owners.size()).isEqualTo(found + 1);
+//    }
 
     @Test
     @Transactional
@@ -167,16 +167,16 @@ public class ClinicServiceTests {
         assertThat(pet7.getName()).isEqualTo(newName);
     }
 
-    @Test
-    public void shouldFindVets() {
-        Collection<Vet> vets = this.vets.findAll();
-
-        Vet vet = EntityUtils.getById(vets, Vet.class, 3);
-        assertThat(vet.getLastName()).isEqualTo("Douglas");
-        assertThat(vet.getNrOfSpecialties()).isEqualTo(2);
-        assertThat(vet.getSpecialties().get(0).getName()).isEqualTo("dentistry");
-        assertThat(vet.getSpecialties().get(1).getName()).isEqualTo("surgery");
-    }
+//    @Test
+//    public void shouldFindVets() {
+//        Collection<Vet> vets = this.vets.findAll();
+//
+//        Vet vet = EntityUtils.getById(vets, Vet.class, 3);
+//        assertThat(vet.getLastName()).isEqualTo("Douglas");
+//        assertThat(vet.getNrOfSpecialties()).isEqualTo(2);
+//        assertThat(vet.getSpecialties().get(0).getName()).isEqualTo("dentistry");
+//        assertThat(vet.getSpecialties().get(1).getName()).isEqualTo("surgery");
+//    }
 
     @Test
     @Transactional

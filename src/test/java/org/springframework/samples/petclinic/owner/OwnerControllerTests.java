@@ -143,6 +143,7 @@ public class OwnerControllerTests {
         mockMvc.perform(post("/owners/{ownerId}/edit", TEST_OWNER_ID)
             .param("firstName", "Joe")
             .param("lastName", "Bloggs")
+            .param("password","Test!123")
             .param("address", "123 Caramel Street")
             .param("city", "London")
             .param("telephone", "01616291589")

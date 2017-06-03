@@ -69,16 +69,14 @@ public class OwnerLoginControllerTests {
             .andExpect(view().name("redirect:/owners/" + TEST_OWNER_ID));
     }
 
-//
-//    @Test
-//    public void testLoginFail() throws Exception {
-//        mockMvc.perform(get("/login")
-//            .param("lastName", "Franklin")
-//            .param("password", "Test!123-wrong")
-//        )
-//            .andExpect(status().isOk())
-//            .andExpect(model().attributeHasFieldErrors("owner", "errorMessage"))
-//            .andExpect(model().attributeHasFieldErrorCode("owner", "errorMessage", "notFound"))
-//            .andExpect(view().name("login/login"));
-//    }
+
+    @Test
+    public void testLoginFail() throws Exception {
+        mockMvc.perform(get("/login")
+            .param("lastName", "Franklin")
+            .param("password", "Test!123-wrong")
+        )
+            .andExpect(status().isOk())
+            .andExpect(view().name("login/login"));
+    }
 }
