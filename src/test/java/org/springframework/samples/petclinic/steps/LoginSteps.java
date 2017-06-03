@@ -9,17 +9,18 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.springframework.samples.petclinic.LoginPage;
 import org.springframework.samples.petclinic.SeleniumTest;
-import org.springframework.samples.petclinic.pages.WelcomePage;
+import org.springframework.samples.petclinic.pages.EmailLoginPage;
+import org.springframework.samples.petclinic.pages.PhoneNumberLoginPage;
 
 public class LoginSteps {
     private HtmlUnitDriver driver;
-    private WelcomePage welcomePage;
+    private PhoneNumberLoginPage phoneNumberLoginPage;
 
     @Before
     public void before() {
         driver = new org.openqa.selenium.htmlunit.HtmlUnitDriver();
         driver.get(SeleniumTest.getBase());
-        welcomePage = PageFactory.initElements(driver, WelcomePage.class);
+        phoneNumberLoginPage = PageFactory.initElements(driver, PhoneNumberLoginPage.class);
     }
 
 
@@ -87,26 +88,22 @@ public class LoginSteps {
 
     @When("^I input the company number,ext,password$")
     public void i_input_the_company_number_ext_password() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-//        throw new PendingException();
+        phoneNumberLoginPage.login("8885287464","6236", "8885287464");
     }
 
     @Then("^user should login success and can see super admin features$")
     public void user_should_login_success_and_can_see_super_admin_features() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-//        throw new PendingException();
+
     }
 
     @Given("^user has valid DID number in RC with super admin features$")
     public void user_has_valid_DID_number_in_RC_with_super_admin_features() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-//        throw new PendingException();
+
     }
 
     @When("^I input the company DID number,password$")
     public void i_input_the_company_DID_number_password() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-//        throw new PendingException();
+        
     }
 
     @Given("^user has valid company ext number in RC with  admin permission$")
