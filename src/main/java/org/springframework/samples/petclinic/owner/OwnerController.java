@@ -20,6 +20,7 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,6 +40,8 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 class OwnerController {
+
+    static boolean isLogin = false;
 
     private static final String VIEWS_OWNER_CREATE_OR_UPDATE_FORM = "owners/createOrUpdateOwnerForm";
     private final OwnerRepository owners;
@@ -132,5 +135,39 @@ class OwnerController {
         mav.addObject(this.owners.findById(ownerId));
         return mav;
     }
+
+
+    @RequestMapping("/")
+    public String welcome(Map<String, Object> model) {
+        model.put("owner", new Owner());
+        isLogin = false;
+        model.put("isLogin", isLogin);
+        model.put("hasError", 1);
+        return "login/login";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login(Owner owner, BindingResult result, Map<String, Object> model)
+    {
+
+        if(owner==null|| StringUtils.isEmpty(owner.getLastName())||StringUtils.isEmpty(owner.getPassword())){
+            model.put("hasError", 1);
+            model.put("isLogin", false);
+            model.put("error", "Empty userName or password.");
+            return "login/login";
+        }
+        Owner findResult = this.owners.findByLastNameAndPassword(owner.getLastName(), owner.getPassword());
+        if(null==findResult){
+            model.put("hasError", 1);
+            model.put("isLogin", false);
+            model.put("error", "Incorrect userName or password.");
+            return "login/login";
+        }else{
+            return "redirect:/owners/"+findResult.getId();
+        }
+    }
+
+
+
 
 }

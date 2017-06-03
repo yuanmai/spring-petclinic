@@ -44,6 +44,10 @@ public interface OwnerRepository extends Repository<Owner, Integer> {
     @Transactional(readOnly = true)
     Collection<Owner> findByLastName(@Param("lastName") String lastName);
 
+    @Query("SELECT owner FROM Owner owner left join fetch owner.pets WHERE owner.lastName =:lastName and owner.password=:password")
+    @Transactional(readOnly = true)
+    Owner findByLastNameAndPassword(@Param("lastName") String lastName,@Param("password") String password);
+
     /**
      * Retrieve an {@link Owner} from the data store by id.
      * @param id the id to search for

@@ -23,14 +23,14 @@ class WelcomeController {
         map.put("admin", "admin123");
     }
 
-    @RequestMapping("/")
-    public String welcome(Map<String, Object> model) {
-        model.put("isLogin", isLogin);
-        model.put("userName", "Welcome admin");
-        return "login/login";
-    }
+//    @RequestMapping("/")
+//    public String welcome(Map<String, Object> model) {
+//        model.put("isLogin", isLogin);
+//        model.put("userName", "Welcome admin");
+//        return "login/login";
+//    }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    //@RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(User user, Map<String, Object> model) {
         if (user == null || StringUtils.isEmpty(user.getUserName()) || StringUtils.isEmpty(user.getPassword())) {
             isLogin = false;

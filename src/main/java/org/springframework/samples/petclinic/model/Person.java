@@ -36,6 +36,12 @@ public class Person extends BaseEntity {
     @NotEmpty
     private String lastName;
 
+    @Column(name = "password")
+    @NotEmpty
+    private String password;
+
+
+
     public String getFirstName() {
         return this.firstName;
     }
@@ -52,4 +58,11 @@ public class Person extends BaseEntity {
         this.lastName = lastName;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
