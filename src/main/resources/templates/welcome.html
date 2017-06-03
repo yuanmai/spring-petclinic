@@ -12,22 +12,19 @@
 
 <div>
     <form method="POST" action="/">
-        <label > User Name
+        <label style="display: block"> User Name
             <input id="username" name="username" type="text" placeholder="John Snow">
         </label>
-        <label > Password
+        <label style="display: block"> Password
             <input id="password" name="password" type="password" placeholder="Password">
         </label>
         <input id="logInButton" type="submit" th:value="Submit">
         <input id="ssoButton" type="button" th:value="SSO">
         <input id="googleButton" type="button" th:value="Google">
-        <label>Remember Me
+        <label style="display: block">Remember Me
             <input id="rememberMeChceckBox" type="checkbox">
         </label>
         <span th:if="${errorCode} == '1'">Login Fail</span>
-        <span th:if="${errorCode} == '2'">Login Fail2</span>
-        <span th:if="${errorCode} == '3'">Login Fail3</span>
-        <!--<span id="errorLabel" th:text="${errorCode} == '1' ? 'Login Fail' : ''"></span>-->
         <a id="forgotPassword" href="#">Forgot Password</a>
     </form>
 </div>

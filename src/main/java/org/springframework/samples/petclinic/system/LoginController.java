@@ -21,14 +21,7 @@ class LoginController {
         if ("110".equals(username)) {
             model.put("errorCode", "1");
             return "welcome";
-        } else if ("122".equals(username)) {
-            model.put("errorCode", "2");
-            return "welcome";
-        } else if ("123".equals(username)) {
-            model.put("errorCode", "3");
-            return "welcome";
         }
-
         return "redirect:/index";
     }
 
