@@ -13,11 +13,11 @@ import javax.persistence.*;
 public class User extends BaseEntity {
     @Column(name = "username")
     @NotEmpty
-    String username;
+    private String username;
 
     @Column(name = "password")
     @NotEmpty
-    String password;
+    private String password;
 
     public String getUsername() {
         return username;

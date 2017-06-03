@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,18 +24,18 @@ class LoginController {
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String login(Map<String, Object> model, @RequestParam String username, String password){
-        if (!loginInternal(username, password)) {
+        if (!isCredentialValid(username, password)) {
             model.put("errorCode", "1");
             return "welcome";
         }
         return "redirect:/index";
     }
 
-    private boolean loginInternal(String username, String password){
+    private boolean isCredentialValid(String username, String password){
         List<User> users = userRepository.findUsers(username);
 
         if(users.isEmpty() || users.size() >1){
-            return  false;
+            return false;
         }
         return isPasswordMath(password, users.get(0).getPassword());
     }

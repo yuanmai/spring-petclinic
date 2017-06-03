@@ -29,10 +29,5 @@ public interface UserRepository extends Repository<User, Integer> {
     @Transactional(readOnly = true)
     List<User> findUsers(@Param("username") String username);
 
-    @Transactional(readOnly = true)
-    User findById(Integer id);
-
-    void save(User user);
-
 }
 
