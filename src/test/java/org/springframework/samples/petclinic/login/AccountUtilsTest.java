@@ -27,4 +27,15 @@ public class AccountUtilsTest {
 //        assertEquals(false, AccountUtils.isValidPhoneNumber("XXX@rringcentral.c"));
     }
 
+    @Test
+    public void should_recongize_extension_number(){
+        assertEquals("(650) 265-0531", AccountUtils.parseAsCountryFormat("1 6502650531"));
+    }
+
+    @Test
+    public void should_return_number_as_plain_number(){
+        assertEquals("8885287464", AccountUtils.parseAsPlainNumber("(888)528-7464"));
+        assertEquals("8887776666", AccountUtils.parseAsPlainNumber("(888)777-6666"));
+    }
+
 }

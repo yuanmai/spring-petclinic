@@ -32,4 +32,27 @@ public class AccountUtils {
     }
 
 
+    public static String parseAsCountryFormat(String number) {
+        PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
+        try {
+            Phonenumber.PhoneNumber phoneNumber = phoneUtil.parse(number, "US");
+
+            return phoneUtil.format(phoneNumber, PhoneNumberUtil.PhoneNumberFormat.NATIONAL);
+        } catch (NumberParseException e) {
+            e.printStackTrace();
+            return "";
+        }
+    }
+
+    public static String parseAsPlainNumber(String number) {
+        PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
+        try {
+            Phonenumber.PhoneNumber phoneNumber = phoneUtil.parse(number, "US");
+
+            return Long.toString(phoneNumber.getNationalNumber());
+        } catch (NumberParseException e) {
+            e.printStackTrace();
+            return "";
+        }
+    }
 }

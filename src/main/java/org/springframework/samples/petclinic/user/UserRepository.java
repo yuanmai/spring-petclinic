@@ -24,6 +24,9 @@ import java.util.List;
 
 public interface UserRepository extends Repository<RcUser, Integer> {
 
+    @Query("SELECT ru FROM RcUser ru WHERE ru.email = :email")
+    List<RcUser> findByEmail(@Param("email") String emai);
+
     @Query("SELECT ru FROM RcUser ru WHERE ru.email = :email and ru.password= :password")
     List<RcUser> findByEmailAndPassword(@Param("email") String email, @Param("password") String password);
 

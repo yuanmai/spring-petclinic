@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class LoginController {
 
     public String currentEmail;
+    public String currentPhoneNumber;
 
     private final UserRepository userRepository;
 
@@ -35,14 +37,15 @@ public class LoginController {
             currentEmail = username;
             return "redirect:login/email";
         }else{
+            currentPhoneNumber = AccountUtils.parseAsCountryFormat(username);
             return "redirect:login/phone_number";
         }
     }
 
 
     @RequestMapping(value = "/login/email", method= RequestMethod.GET)
-    public String renderEmailLogin(){
-
+    public String renderEmailLogin(Map<String, Object> model){
+        model.put("currentEmail", currentEmail);
         return "login/email_login";
     }
 
@@ -63,7 +66,8 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/login/phone_number", method= RequestMethod.GET)
-    public String renderPhonNumberLogin(){
+    public String renderPhonNumberLogin(Map<String, Object> model){
+        model.put("currentPhoneNumber", currentPhoneNumber);
         return "login/phone_number_login";
     }
 
@@ -71,7 +75,8 @@ public class LoginController {
     public String phoneNumberLogin(@RequestParam String phoneNumber,
                                    @RequestParam String extension,
                                    @RequestParam String password){
-        List<RcUser> searchResult = !StringUtils.hasText(extension)?userRepository.findByPhoneNumberAndPassword(phoneNumber,password):userRepository.findByPhoneNumberExtAndPassword(phoneNumber,password,extension);
+        String plainPhoneNumber = AccountUtils.parseAsPlainNumber(phoneNumber);
+        List<RcUser> searchResult = !StringUtils.hasText(extension)?userRepository.findByPhoneNumberAndPassword(plainPhoneNumber,password):userRepository.findByPhoneNumberExtAndPassword(plainPhoneNumber,password,extension);
         if(!searchResult.isEmpty()){
             return "redirect:success";
         }else{

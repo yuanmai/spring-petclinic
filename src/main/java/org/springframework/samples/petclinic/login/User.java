@@ -56,4 +56,6 @@ public class User extends BaseEntity{
     public void setEmail(String email) {
         this.email = email;
     }
+
+
 }
